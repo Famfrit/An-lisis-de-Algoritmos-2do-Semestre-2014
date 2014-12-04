@@ -1,5 +1,6 @@
 package com.example.prueba;
 
+//Librerias utilizadas para la implementacion
 import java.util.Random;
 
 import android.app.Activity;
