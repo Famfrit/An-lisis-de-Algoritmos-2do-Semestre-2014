@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity implements OnCheckedChangeListener, OnClickListener{
+	//definición de los 64 botones que incluye el tablero
 	ToggleButton tb1;
 	ToggleButton tb2;
 	ToggleButton tb3;
@@ -92,13 +93,14 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//definición de botones generar y reiniciar
 		b1 = (Button)findViewById(R.id.button1);
 		b1.setOnClickListener(this);
 		b2 = (Button)findViewById(R.id.button2);
 		b2.setOnClickListener(this);
 		
 		tv1=(TextView)findViewById(R.id.textView);
-		
+		//Activación del boton para su funcionamientos
 		tb1=(ToggleButton)findViewById(R.id.A1);
 		tb2=(ToggleButton)findViewById(R.id.A2);
 		tb3=(ToggleButton)findViewById(R.id.A3);
@@ -165,7 +167,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		tb64=(ToggleButton)findViewById(R.id.H8);
 		
 		
-		
+		//direccionamiento de la matriz de ToggleButton para cada botón
 		m[0][0] = tb1;
 		m[0][1] = tb2;
 		m[0][2] = tb3;
@@ -233,7 +235,7 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	
 	
 		
-		
+		//Acción de activado de cada Botón
 		tb1.setOnCheckedChangeListener(this);
 		tb2.setOnCheckedChangeListener(this);
 		tb3.setOnCheckedChangeListener(this);
@@ -595,7 +597,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		
 	}
 	
-	public void Lineas(int i, int j, ToggleButton A[][]){ //determina los movimientos de una reina
+	public void Lineas(int i, int j, ToggleButton A[][]){ 
+		//determina los movimientos de una reina
 				
 		
 		   int c=0;
@@ -653,7 +656,6 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		
 	    }
 	    
-	   
 	    tv1.setText("Reinas puestas: "+contadorReinas);
 	    if(contadorReinas>=8){
 	    	contadorReinas=0;
@@ -676,7 +678,8 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 		
 		
 		
-		switch (v.getId()){	//boton reiniciar
+		switch (v.getId()){	
+		//boton reiniciar
 				
 		case R.id.button1:
 			
