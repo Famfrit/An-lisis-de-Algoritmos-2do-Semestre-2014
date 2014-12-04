@@ -1,6 +1,5 @@
 package com.example.prueba;
 
-//Librerias utilizadas para la implementacion
 import java.util.Random;
 
 import android.app.Activity;
@@ -675,15 +674,15 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 	
 	
 	@Override
-	public void onClick(View v) { 
+public void onClick(View v) { 
 		
 		
 		
 		switch (v.getId()){	
-		//boton reiniciar
 				
-		case R.id.button1:
-			
+		case R.id.button1: //boton reiniciar, reinicia el tablero(matriz)
+		
+		for(int k=0;k<4;k++){
 			for(int i=0;i<8;i++){
 				for(int j=0;j<8;j++){
 					m[i][j].setEnabled(true);
@@ -691,32 +690,54 @@ public class MainActivity extends Activity implements OnCheckedChangeListener, O
 					contadorReinas = 0;
 				}
 			}
+		}	
 			tv1.setText("Reinas puestas: "+contadorReinas);
 			break;
 			
-		case R.id.button2:
+		case R.id.button2: //genera soluciones aleatorias
 			
+			
+			int ct=0;
+			int cF=0;
 			Random r = new Random();
 			int i = r.nextInt(8 - 0) + 0;
 			int j = r.nextInt(8 - 0) + 0;
-			Lineas(i,j,m);
+		
+		
+			while(ct!=8 && cF!=200){ 
+				
+			i = r.nextInt(8 - 0) + 0;
+			j = r.nextInt(8 - 0) + 0;
+				 
+			if(m[i][j].isEnabled()){ //pregunta si el boton está disponible
+				Lineas(i,j,m);
+				m[i][j].setChecked(true);
+				ct++;
+			 }
+			cF++;
 			
-			
+			if(cF==200){ //contador para los casos que las reinas sean menor que 8
+						
+			for(int k=0;k<4;k++){ //reinicia el tablero(matriz)
+				for(int a=0;a<8;a++){
+					for(int b=0;b<8;b++){
+						m[a][b].setEnabled(true);
+						m[a][b].setChecked(false);
+						contadorReinas = 0;
+					}
+				}
+			}	
+			cF=0; 
+			ct=0; //reinicia el contador de reinas para hacer un nuevo intento
+			}
+			}
+				
+			tv1.setText("Reinas puestas: "+ct);
 			break;
+			}
 		
-		
+			
 		}
-		
-		
-			
-			
-		    
-			
-		
-		
-		
-		
-	}
 	
 	
 
